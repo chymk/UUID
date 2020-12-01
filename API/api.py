@@ -1,21 +1,24 @@
 import flask
 from flask import request, jsonify
-import GenerateUUID
+import json
+import UUID
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
-
+x = {
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
 
 @app.route('/', methods=['GET'])
 def home():
     return ["At Root"]
 
-@app.route('/api/v1/GenerateUUID', methods = ['POST'])
+@app.route('/api/v1/UUID', methods = ['POST'])
 def api_all():
-    data = request.form
-    print(data["count"])
-    if data["count"]>0:
-        GenerateUUID.UUID(data.count)
-    return GenerateUUID.getUUID()
+    data = request.json
+    y = UUID.UUID(int(data["count"]))
+    return jsonify(y.getUUID())
 
 app.run()

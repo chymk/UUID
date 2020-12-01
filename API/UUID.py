@@ -1,7 +1,7 @@
 import uuid
 
 class UUID:
-    def __init__(self,count=0):
+    def __init__(self,count=1):
         self.count=count
 
     def getUUID(self):
