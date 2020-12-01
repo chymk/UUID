@@ -13,7 +13,8 @@ x = {
 
 @app.route('/', methods=['GET'])
 def home():
-    return ["At Root"]
+    y = UUID.UUID()
+    return jsonify(y.getUUID())
 
 @app.route('/api/v1/UUID', methods = ['POST'])
 def api_all():
